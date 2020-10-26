@@ -1,10 +1,30 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
-import { ExampleComponent } from 'react-clickoutsideme'
-import 'react-clickoutsideme/dist/index.css'
+import ClickOutsideMe from 'react-clickoutsideme'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  const onClickOutside = useCallback(() => {
+    alert('Clicked outside!')
+  }, [])
+
+  return (
+    <ClickOutsideMe onClickOutside={onClickOutside}>
+      <div style={styles.container}>Click outside me!</div>
+    </ClickOutsideMe>
+  )
+}
+
+const styles = {
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 200,
+    height: 200,
+    color: 'white',
+    backgroundColor: 'blue',
+    margin: 20
+  }
 }
 
 export default App

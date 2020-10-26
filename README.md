@@ -13,16 +13,23 @@ npm install --save react-clickoutsideme
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React, { useCallback } from 'react'
 
-import MyComponent from 'react-clickoutsideme'
-import 'react-clickoutsideme/dist/index.css'
+import ClickOutsideMe from 'react-clickoutsideme'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const App = () => {
+  const onClickOutside = useCallback(() => {
+    alert('Clicked outside!')
+  }, [])
+
+  return (
+    <ClickOutsideMe onClickOutside={onClickOutside}>
+      <div>Click outside me!</div>
+    </ClickOutsideMe>
+  )
 }
+
+export default App
 ```
 
 ## License
